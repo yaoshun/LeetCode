@@ -19,7 +19,7 @@ public:
 
         while (cur) {
             // Store the variable for next cycle.
-            // Currenly need to insert "ins" node.
+            // Currently need to insert "ins" node.
             ListNode* ins = cur;
             cur = cur->next;
 

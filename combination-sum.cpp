@@ -27,7 +27,7 @@ public:
                 dfs(candidates, start + 1, target - i * candidates[start], r, res);
                 r.push_back(candidates[start]);
             }
-            while (r.back() == candidates[start])
+            for (int i = 0; i * candidates[start] <= target; i++) 
                 r.pop_back();
             return;
         }

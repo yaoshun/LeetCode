@@ -78,3 +78,43 @@ int find(vector<int>& father, int x) {
     }
     return res;
 }
+
+// Solution 2: hashset solution with BFS.
+// The key is that parent that immediately push the node into queue.
+// It need to be excluded when checking the cycle.
+
+class Solution {
+public:
+    bool validTree(int n, vector<pair<int, int>>& edges) {
+        // For a tree, we can traverse the tree from any node of it.
+        int m = edges.size();
+        if (m != (n - 1))
+            return false;
+            
+        vector<vector<int>> adj(n);
+        for (auto& pair : edges) {
+            adj[pair.first].push_back(pair.second);
+            adj[pair.second].push_back(pair.first);
+        }
+        
+        vector<bool> visited(n, false);
+        queue<pair<int, int>> q;
+        q.push({0, 0});
+        while (!q.empty()) {
+            int node = q.front().first;
+            int parent = q.front().second;
+            visited[node] = true;
+            q.pop();
+            for (auto& nn : adj[node]) {
+                if (nn == parent) {
+                    continue;
+                } else if (visited[nn] == true) {
+                    return false;
+                } else {
+                    q.push({nn, node});
+                }
+            }
+        }
+        return true;
+    }
+};

@@ -30,7 +30,7 @@ public:
                 odd++;
                 if (odd == 2)
                     return res;
-                // Already store the only odd char.
+                // Store the only odd char.
                 resString.push_back(pair.first);
             }
         }
@@ -46,13 +46,15 @@ public:
                 add = false;
                 pair.second -= 2;
                 resString.push_back(pair.first);
+                // Traversing the unordered_map could gurantee there is
+                // no repeating strings in the result.
                 dfs(res, resString, mp, odd);
                 resString.pop_back();
                 pair.second += 2;
             }
         }
         
-        // Termination point, where every node is equal or less than 0.
+        // Termination point, where every node is equal or less than 1.
         if (add) {
             string t = resString.substr(odd);
             reverse(t.begin(), t.end());

@@ -30,9 +30,9 @@ public:
         int pb = k - pa;
         
         if (nums1[i + pa -1] <= nums2[m + pb - 1]) {
-            return findKth(nums1, i + pa, j, nums2, m, n, k - pa);
+            return findKth(nums1, i + pa, j, nums2, m, m + pb - 1, k - pa);
         } else {
-            return findKth(nums1, i, j, nums2, m + pb, n, k - pb);
+            return findKth(nums1, i, i + pa - 1, nums2, m + pb, n, k - pb);
         }
     }
 };

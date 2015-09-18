@@ -19,10 +19,10 @@ public:
         if (n - m < j - i)
             return findKth(nums2, m, n, nums1, i, j, k);
         if (i > j)
-            return nums2[m + k - 1];
+            return static_cast<double>(nums2[m + k - 1]);
         
         if (k == 1)
-            return min(nums1[i], nums2[m]);
+            return static_cast<double>(min(nums1[i], nums2[m]));
 
         // Check k == 1 in order to make sure that pa >= 1
         // and pb >= 1 in which case the index will make sense. 
